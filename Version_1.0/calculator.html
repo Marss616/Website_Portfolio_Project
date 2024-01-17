@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Output Syntax Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <div class="inline_header">
+        <h1>Home</h1> <h1>Calculator V1.0</h1> <h1>Placeholder</h1>
+    </div>  
+</header>
+<body>
+    <div class="content-wrapper"> <!-- Changed to div with class 'content' -->
+        <table> <!-- Added table tag -->
+            <div class="output_container">
+                <h4>InPut: <input type="text" id="inputField" readonly>
+                    <script>
+                    </script> 
+                </h4>
+            </div>
+            <div class="working_container">
+                <h4>OutPut: <input type="text" id="inputField" readonly>
+                    <script>
+
+                    </script>
+                </h4>
+            </div>
+            <tr>
+                <td><button id="btn">/</button></td>
+                <td><button id="btn">*</button></td>
+                <td><button id="btn">+</button></td>
+                <td><button id="btn">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn0">0</button></td>
+                <td><button id="btn1">1</button></td>
+                <td><button id="btn2">2</button></td>
+                <td><button id="btn3">3</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn4">4</button></td>
+                <td><button id="btn5">5</button></td>
+                <td><button id="btn6">6</button></td>
+                <td><button id="btn7">7</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn8">8</button></td>
+                <td><button id="btn9">9</button></td>
+                <td><button type="button">Enter</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var globalButtonValue;
+
+        document.querySelector('table').addEventListener('click', function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                let buttonId = event.target.id;
+                if (buttonId.startsWith('btn')) {
+                    globalButtonValue = buttonId.replace('btn', '');
+                    console.log('Button ' + globalButtonValue + ' was clicked!');
+                }
+            }
+        });
+    </script>
+
+</body>
+<footer>
+        <h1>Created By Jack Bell</h1> <h1>Calculator V1.0</h1> <h1>Donate</h1>
+</footer>
+</html>

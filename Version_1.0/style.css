@@ -1,47 +1,85 @@
-.inline_header h1 {
-    display: inline-block; /* This will allow them to be on the same line */
-    margin-right: 25%; /* Optional: Adjusts the space between the headers */
-    vertical-align: top;
-    padding-left: 10px; /* To align them at the top if they have different heights */
-/* Remove any width or block-level display that might be inherited */
+
+.inline_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    background-color: lightgrey;
+    width: 100%;
+    position: fixed; /* Add this to fix the header at the top */
+    top: 0; /* Align the header to the top of the page */
+    left: 0; /* Align the header to the left of the page */
+    z-index: 1000; /* Ensure the header is above other content */
 }
 
+h1{
+    font-family: Arial, sans-serif;    
+    color: rgba(16, 16, 16, 0.519);
+}
+body {
+    margin: 0; /* Reset margin to prevent any default spacing */
+    width: 100%; /* Set width to 100% of the viewport */
+    min-height: 100vh; /* Minimum height to be full viewport height */
+    padding-top: 70px;
+    
+}
 .content {
     width: 150px;
     height: 150px;
-    padding-top: 10px;
+    /* padding-top: 10px; You might not need this if using flexbox */
+    /* Additional styles */
 }
-.output_container{
-    width: 150px;
-    height: 150px;
+/* This is the parent container for .content */
+.content-wrapper {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack children vertically */
+    text-align: center; /* Center text for any direct text children */
+    min-height: calc(100vh - 140px); /* Subtract the total height of header and footer */
+    margin-top: 70px; /* Height of the header */
+    margin-bottom: 70px; /* Height of the footer */
+    position: relative; /* For absolute positioning inside */
+}
+.output_container {
+    padding: 10px;
+    width: 485px;
+    height: 50px;
     border: 2px solid black;
-}
-.working_container{
-    width: 150px;
-    height: 150px;
-    border: 2px solid black;
-}
-table {
-    border-collapse: collapse; /* Optional, for better table styling */
+    text-align: left; /* Aligns text to the left */
 }
 
-tr {
+.working_container {
+    padding: 10px;
+    width: 485px;
+    height: 50px;
     border: 2px solid black;
+    text-align: left; /* Aligns text to the left */
+}
+
+table {
+    border-collapse: collapse; /* Optional, for better table styling */
 }
 
 td {
     width: 100px;
     height: 50px;
     padding: 10px;
-    border: 2px solid black; /* Added border to td for consistency */
+    border: 2px solid black;
+    background-color: rgba(128, 128, 128, 0.508);
 }
-header{
+button{
+    width: 100%;
+    height: 100%;
+}
+footer {
     background-color: lightgrey;
     height: 70px;
     width: 100%;
-    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 10px 0; /* Adjust padding to center the content vertically */
 }
-h1{
-    font-family: Arial, sans-serif;    
-    color: rgba(16, 16, 16, 0.519);
-}
+
