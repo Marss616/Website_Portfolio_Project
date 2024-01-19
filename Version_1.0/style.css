@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
     height: 70px;
-    background-color: lightgrey;
+    background-color: rgba(50, 47, 47, 0.541);
     width: 100%;
     position: fixed; /* Add this to fix the header at the top */
     top: 0; /* Align the header to the top of the page */
@@ -14,7 +14,7 @@
 
 h1{
     font-family: Arial, sans-serif;    
-    color: rgba(16, 16, 16, 0.519);
+    color: rgb(255, 255, 255);
 }
 body {
     margin: 0; /* Reset margin to prevent any default spacing */
@@ -42,19 +42,23 @@ body {
     position: relative; /* For absolute positioning inside */
 }
 .output_container {
+    background-color: rgba(121, 114, 114, 0.905);
     padding: 10px;
     width: 485px;
     height: 50px;
     border: 2px solid black;
     text-align: left; /* Aligns text to the left */
+    
 }
 
 .working_container {
+    background-color: rgba(121, 114, 114, 0.905);
     padding: 10px;
     width: 485px;
     height: 50px;
     border: 2px solid black;
     text-align: left; /* Aligns text to the left */
+    
 }
 
 table {
@@ -66,14 +70,14 @@ td {
     height: 50px;
     padding: 10px;
     border: 2px solid black;
-    background-color: rgba(128, 128, 128, 0.508);
+    background-color: rgba(121, 114, 114, 0.905);
 }
 button{
     width: 100%;
     height: 100%;
 }
 footer {
-    background-color: lightgrey;
+    background-color: rgba(50, 47, 47, 0.541);
     height: 70px;
     width: 100%;
     position: fixed;
@@ -81,5 +85,18 @@ footer {
     left: 0;
     text-align: center;
     padding: 10px 0; /* Adjust padding to center the content vertically */
+}
+a{
+    font-family: Arial, sans-serif;    
+    color: rgb(255, 255, 255);
+}
+.home_text_wrapper {
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
 }
 

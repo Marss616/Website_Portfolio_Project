@@ -6,7 +6,7 @@
 </head>
 <header>
     <div class="inline_header">
-        <h1>Home</h1> <h1>Calculator V1.0</h1> <h1>Placeholder</h1>
+        <h1><a href="index.html">Home</a></h1><h1>Created by Jack Bell </h1> <h1><a href="https://github.com/Marss616/Website_Project">View on GitHub</a></h1>
     </div>  
 </header>
 <body>
@@ -14,22 +14,17 @@
         <table> <!-- Added table tag -->
             <div class="output_container">
                 <h4>InPut: <input type="text" id="inputField" readonly>
-                    <script>
-                    </script> 
                 </h4>
             </div>
             <div class="working_container">
-                <h4>OutPut: <input type="text" id="inputField" readonly>
-                    <script>
-
-                    </script>
+                <h4>OutPut: <input type="text" id="OutputField" readonly>
                 </h4>
             </div>
             <tr>
-                <td><button id="btn">/</button></td>
-                <td><button id="btn">*</button></td>
-                <td><button id="btn">+</button></td>
-                <td><button id="btn">-</button></td>
+                <td><button id="btn/">/</button></td>
+                <td><button id="btn*">*</button></td>
+                <td><button id="btn+">+</button></td>
+                <td><button id="btn-">-</button></td>
             </tr>
             <tr>
                 <td><button id="btn0">0</button></td>
@@ -46,19 +41,61 @@
             <tr>
                 <td><button id="btn8">8</button></td>
                 <td><button id="btn9">9</button></td>
-                <td><button type="button">Enter</button></td>
+                <td><button id="enter_btn">Enter</button></td>
+                <td><button id="clear_btn">Clear</button></td>
             </tr>
         </table>
     </div>
     <script>
-        var globalButtonValue;
+        var globalButtonValue = ''; // Current input or operation
+        var operand1 = null; // First operand
+        var operator = null; // Operator (+, -, *, /)
 
         document.querySelector('table').addEventListener('click', function(event) {
             if (event.target.tagName === 'BUTTON') {
-                let buttonId = event.target.id;
-                if (buttonId.startsWith('btn')) {
-                    globalButtonValue = buttonId.replace('btn', '');
-                    console.log('Button ' + globalButtonValue + ' was clicked!');
+                var buttonId = event.target.id;
+                var buttonValue = event.target.textContent;
+
+                // Clear button logic
+                if (buttonId === 'clear_btn') {
+                    globalButtonValue = '';
+                    operand1 = null;
+                    operator = null;
+                    document.getElementById('inputField').value = '';
+                    document.getElementById('OutputField').value = '';
+                    console.log('Clear button was clicked!');
+                }
+                // Operator buttons logic
+                else if (['btn/', 'btn*', 'btn+', 'btn-'].includes(buttonId)) {
+                    operand1 = parseFloat(globalButtonValue); // Store the first operand
+                    operator = buttonValue; // Store the operator
+                    globalButtonValue += ' ' + operator + ' '; // Append operator to the current input
+                    document.getElementById('inputField').value = globalButtonValue; // Update input field
+                }
+                // Number buttons logic
+                else if (buttonId.startsWith('btn')) {
+                    globalButtonValue += buttonValue;
+                    document.getElementById('inputField').value = globalButtonValue;
+                    console.log('Button ' + buttonValue + ' was clicked!');
+                }
+                // Enter button logic
+                else if (buttonId === 'enter_btn') {
+                    if (operand1 !== null && operator && globalButtonValue.split(' ').length > 2) {
+                        var operationParts = globalButtonValue.split(' ');
+                        var operand2 = parseFloat(operationParts[operationParts.length - 1]);
+                        var result;
+                        switch(operator) {
+                            case '+': result = operand1 + operand2; break;
+                            case '-': result = operand1 - operand2; break;
+                            case '*': result = operand1 * operand2; break;
+                            case '/': result = operand1 / operand2; break;
+                        }
+                        document.getElementById('OutputField').value = result;
+                        // Optionally reset the input field or prepare for next operation
+                        globalButtonValue = result.toString(); // Update globalButtonValue with result for continuous operations
+                        operand1 = null; // Reset the first operand
+                        operator = null; // Reset the operator
+                    }
                 }
             }
         });
@@ -66,6 +103,6 @@
 
 </body>
 <footer>
-        <h1>Created By Jack Bell</h1> <h1>Calculator V1.0</h1> <h1>Donate</h1>
+        <h1>V1.0</h1>
 </footer>
 </html>
