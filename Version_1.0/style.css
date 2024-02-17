@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
     height: 70px;
-    background-color: rgba(50, 47, 47, 0.541);
+    background-color: rgba(16, 122, 184, 0.541);
     width: 100%;
     position: fixed; /* Add this to fix the header at the top */
     top: 0; /* Align the header to the top of the page */
@@ -78,7 +78,7 @@ button{
     height: 100%;
 }
 footer {
-    background-color: rgba(50, 47, 47, 0.541);
+    background-color: rgba(16, 122, 184, 0.541);
     height: 70px;
     width: 100%;
     position: fixed;
