@@ -1,69 +1,61 @@
+html, body {
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
 .inline_header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 70px;
+    height: 40px;
     background-color: rgba(16, 122, 184, 0.541);
     width: 100%;
-    position: fixed; /* Add this to fix the header at the top */
-    top: 0; /* Align the header to the top of the page */
-    left: 0; /* Align the header to the left of the page */
-    z-index: 1000; /* Ensure the header is above other content */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     font-size: 12px;
 }
 
-h1{
-    font-family: Arial, sans-serif;    
+h1 {
+    font-family: Arial, sans-serif;
     color: rgb(255, 255, 255);
 }
-body {
-    margin: 0; /* Reset margin to prevent any default spacing */
-    width: 100%; /* Set width to 100% of the viewport */
-    min-height: 100vh; /* Minimum height to be full viewport height */
-    padding-top: 70px;
-    
+
+img {
+    width: 100%;
+    height: auto; /* Changed to 'auto' to maintain aspect ratio */
 }
+
 .content {
     width: 150px;
     height: 150px;
-    /* padding-top: 10px; You might not need this if using flexbox */
-    /* Additional styles */
-}
-/* This is the parent container for .content */
-.content-wrapper {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-direction: column; /* Stack children vertically */
-    text-align: center; /* Center text for any direct text children */
-    min-height: calc(100vh - 140px); /* Subtract the total height of header and footer */
-    margin-top: 70px; /* Height of the header */
-    margin-bottom: 70px; /* Height of the footer */
-    position: relative; /* For absolute positioning inside */
-}
-.output_container {
-    background-color: rgba(121, 114, 114, 0.905);
-    padding: 10px;
-    width: 485px;
-    height: 50px;
-    border: 2px solid black;
-    text-align: left; /* Aligns text to the left */
-    
 }
 
-.working_container {
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: calc(100vh - 80px); /* Adjusted to account for header and footer */
+    padding-top: 40px; /* Added padding-top to push content below the fixed header */
+    position: relative;
+}
+
+.output_container, .working_container {
     background-color: rgba(121, 114, 114, 0.905);
     padding: 10px;
     width: 485px;
     height: 50px;
     border: 2px solid black;
-    text-align: left; /* Aligns text to the left */
-    
+    text-align: left;
 }
 
 table {
-    border-collapse: collapse; /* Optional, for better table styling */
+    border-collapse: collapse;
 }
 
 td {
@@ -73,31 +65,53 @@ td {
     border: 2px solid black;
     background-color: rgba(121, 114, 114, 0.905);
 }
-button{
+
+button {
     width: 100%;
     height: 100%;
 }
+
 footer {
     background-color: rgba(16, 122, 184, 0.541);
-    height: 70px;
+    height: 40px;
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
-    padding: 10px 0; /* Adjust padding to center the content vertically */
+    padding-bottom: 20px; /* Adjusted to create space within the footer */
+    font-size: 12px;
+    
 }
-a{
-    font-family: Arial, sans-serif;    
+
+a {
+    font-family: Arial, sans-serif;
     color: rgb(255, 255, 255);
 }
+
 .home_text_wrapper {
-    width: 500px;
-    height: 200px;
+    background-color: rgba(0, 0, 0, 0.856);
+    width: 1500px;
+    height: 700px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+    color: rgba(0, 162, 255, 0.541);
+    text-align: center; /* Ensures text is centered horizontally */
 }
 
+.container {
+    position: relative; /* This makes the .container a reference for the absolutely positioned .background-image */
+    z-index: 1; /* Ensure the container's z-index is higher than the image's */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the full container width */
+    height: 100%; /* Cover the full container height */
+    z-index: -1; /* Send the image to the background */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
