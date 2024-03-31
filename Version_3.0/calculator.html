@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Output Syntax Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <div class="inline_header">
+        <h1><a href="index.html">Home</a></h1>
+    </div>  
+</header>
+
+<body>
+    <div class="background-image">
+        <img src="pictures/sM30tC.webp" alt="Background" class="background-image">
+        <!-- Other content goes here -->
+    </div>
+    
+    <div class="content-wrapper">
+        <table>
+            <div class="output_container">
+                <h4>InPut: <input type="text" id="inputField" readonly>
+                </h4>
+            </div>
+            <div class="working_container">
+                <h4>OutPut: <input type="text" id="OutputField" readonly>
+                </h4>
+            </div>
+            <tr>
+                <td><button id="btn/">/</button></td>
+                <td><button id="btn*">*</button></td>
+                <td><button id="btn+">+</button></td>
+                <td><button id="btn-">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn0">0</button></td>
+                <td><button id="btn1">1</button></td>
+                <td><button id="btn2">2</button></td>
+                <td><button id="btn3">3</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn4">4</button></td>
+                <td><button id="btn5">5</button></td>
+                <td><button id="btn6">6</button></td>
+                <td><button id="btn7">7</button></td>
+            </tr>
+            <tr>
+                <td><button id="btn8">8</button></td>
+                <td><button id="btn9">9</button></td>
+                <td><button id="enter_btn">Enter</button></td>
+                <td><button id="clear_btn">Clear</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var globalButtonValue = ''; // Current input or operation
+        var operand1 = null; // First operand
+        var operator = null; // Operator (+, -, *, /)
+
+        document.querySelector('table').addEventListener('click', function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                var buttonId = event.target.id;
+                var buttonValue = event.target.textContent;
+
+                // Clear button logic
+                if (buttonId === 'clear_btn') {
+                    globalButtonValue = '';
+                    operand1 = null;
+                    operator = null;
+                    document.getElementById('inputField').value = '';
+                    document.getElementById('OutputField').value = '';
+                    console.log('Clear button was clicked!');
+                }
+                // Operator buttons logic
+                else if (['btn/', 'btn*', 'btn+', 'btn-'].includes(buttonId)) {
+                    operand1 = parseFloat(globalButtonValue); // Store the first operand
+                    operator = buttonValue; // Store the operator
+                    globalButtonValue += ' ' + operator + ' '; // Append operator to the current input
+                    document.getElementById('inputField').value = globalButtonValue; // Update input field
+                }
+                // Number buttons logic
+                else if (buttonId.startsWith('btn')) {
+                    globalButtonValue += buttonValue;
+                    document.getElementById('inputField').value = globalButtonValue;
+                    console.log('Button ' + buttonValue + ' was clicked!');
+                }
+                // Enter button logic
+                else if (buttonId === 'enter_btn') {
+                    if (operand1 !== null && operator && globalButtonValue.split(' ').length > 2) {
+                        var operationParts = globalButtonValue.split(' ');
+                        var operand2 = parseFloat(operationParts[operationParts.length - 1]);
+                        var result;
+                        switch(operator) {
+                            case '+': result = operand1 + operand2; break;
+                            case '-': result = operand1 - operand2; break;
+                            case '*': result = operand1 * operand2; break;
+                            case '/': result = operand1 / operand2; break;
+                        }
+                        document.getElementById('OutputField').value = result;
+                        // Optionally reset the input field or prepare for next operation
+                        globalButtonValue = result.toString(); // Update globalButtonValue with result for continuous operations
+                        operand1 = null; // Reset the first operand
+                        operator = null; // Reset the operator
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+<footer>
+        <h1>V1.0</h1>
+</footer>
+</html>
