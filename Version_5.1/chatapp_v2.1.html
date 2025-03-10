@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mars616 Portfolio</title>
+<link href="css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  
+<div class="container">
+  <header>
+    <nav class="secondary_header" id="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section>
+    <h2 class="noDisplay"></h2>
+    <article class="left_article">
+      <h3>Chat App v2.1</h3>
+      <p>
+          This version introduces <strong>multi-instance communication</strong>, allowing multiple chat clients to connect and communicate with each other using a <strong>peer-to-peer (P2P) system</strong> or a <strong>centralized server</strong>.
+      </p>
+      
+      <h4>New Features in v2.1:</h4>
+      <ul>
+          <li><strong>Peer-to-Peer Communication:</strong> Users can connect directly without a central server.</li>
+          <li><strong>Multi-Client Server Mode:</strong> A user can start a server to allow multiple clients to join.</li>
+          <li><strong>Callsign-Based Identification:</strong> Each client uses a unique callsign for easy recognition.</li>
+          <li><strong>Persistent Chat History:</strong> Messages are saved in a <code>chat_history.txt</code> file for later reference.</li>
+          <li><strong>Broadcast Messaging:</strong> Messages are relayed to all connected clients.</li>
+          <li><strong>Graceful Disconnection:</strong> Users can exit using the <code>/exit</code> command.</li>
+      </ul>
+      
+      <h4>How It Works:</h4>
+      <ol>
+          <li><strong>Starting a Server:</strong> Users can initiate a chat server that listens for connections.</li>
+          <li><strong>Connecting as a Client:</strong> Users can join an existing chat server or connect directly to a peer.</li>
+          <li><strong>Chat Logging:</strong> Every message is stored in a text file (<code>chat_history.txt</code>) for future reference.</li>
+      </ol>
+      
+      <h4>Usage:</h4>
+      <p>
+          Run the program and choose between starting a <strong>server</strong> or connecting to a <strong>peer</strong>. <br>
+          Use a unique callsign to identify yourself in the chat. <br>
+          Type messages to chat in real time. <br>
+          Use the <code>/exit</code> command to disconnect safely.
+      </p>
+      
+      <p>This version enhances usability and scalability, making it an efficient solution for small group communication or testing P2P chat applications. 🚀</p>
+    </article>
+    <aside class="right_article">
+      <img src="images/me hidden.png" alt="" class="placeholder"/>
+        <!-- <article class="left_article">
+          <h3>Link tree</h3>
+          <h4>THM</h4>
+          <h4>HTB</h4>
+          </p>
+        </article>
+    </aside>
+    !-->
+  </section>
+  <footer class="secondary_header footer">
+    <div class="copyright"><strong>Version 7.1</strong></div>
+  </footer>
+
+</body>
+</html>

@@ -69,11 +69,11 @@ p {
 
 .secondary_header ul li {
   display: inline-block;
-  margin-right: 15%;
+  margin-right: 20%;
   color: #00ff44;/
   letter-spacing: 0.0625em;
   transition: color 0.3s linear;
-  font-size: 1.25em; /* Increase text size */
+  font-size: 1.50em; /* Increase text size */
 }
 
 .secondary_header ul li a {
