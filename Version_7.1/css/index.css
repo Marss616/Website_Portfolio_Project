@@ -1,19 +1,6 @@
 @charset "UTF-8";
 
-/* General Styles */
-a {
-  color: #00ff44; /* Green links everywhere */
-  text-decoration: none; /* Optional: remove underline */
-}
-
-a:visited {
-  color: #00ff44; /* Keep green after click */
-}
-
-a:hover {
-  color: #717070; /* Optional: change on hover */
-}
-
+/* ========== General Reset & Body ========== */
 body {
   margin: 0;
   padding: 0;
@@ -26,13 +13,18 @@ body {
   color: #ffffff;
 }
 
-p {
-  color: #ffffff;
-  line-height: 1.5;
-  text-align: justify;
-  font-size: 1em;
+a {
+  color: #00ff44;
+  text-decoration: none;
+}
+a:visited {
+  color: #00ff44;
+}
+a:hover {
+  color: #717070;
 }
 
+/* ========== Container ========== */
 .container {
   background-color: #0e0e0e;
   width: 100%;
@@ -44,6 +36,15 @@ p {
   padding: 1em;
 }
 
+/* ========== Typography ========== */
+p {
+  color: #ffffff;
+  line-height: 1.5;
+  text-align: justify;
+  font-size: 1em;
+}
+
+/* ========== Header & Footer ========== */
 .primary_header {
   background-color: #52bad5;
   padding: 10px 0;
@@ -69,7 +70,7 @@ p {
   text-align: center;
 }
 
-/* Navigation Styles */
+/* ========== Navigation ========== */
 .secondary_header ul {
   list-style: none;
   padding: 0;
@@ -82,16 +83,7 @@ p {
   margin-right: 20%;
   letter-spacing: 0.0625em;
   transition: color 0.3s linear;
-  font-size: 1.50em;
-}
-
-.secondary_header ul li a {
-  text-decoration: none;
-  color: #00ff44; /* Force links to green */
-}
-
-.secondary_header ul li a:visited {
-  color: #00ff44; /* Keep green after click */
+  font-size: 1.5em;
 }
 
 .secondary_header ul li a:hover {
@@ -99,7 +91,7 @@ p {
   cursor: pointer;
 }
 
-/* Main Content */
+/* ========== Main Section Layout ========== */
 section {
   display: flex;
   flex-wrap: wrap;
@@ -107,31 +99,9 @@ section {
   flex: 1;
 }
 
-/* Article Sections */
 .left_article, .right_article {
   flex: 1;
   padding: 1em;
-  height: auto;
-}
-
-.right_article {
-  flex: 1.5;
-  padding: 2em;
-  background-color: #0e0e0e;
-  color: #ffffff;
-  text-align: center;
-}
-
-.right_article img {
-  width: 80%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.left_article {
-  flex: 1;
   background-color: #0e0e0e;
   color: #ffffff;
 }
@@ -144,13 +114,77 @@ section {
 }
 
 .left_article p {
-  color: #ffffff;
-  line-height: 1.5;
-  text-align: justify;
   font-size: 1em;
 }
 
-/* Column Styles */
+.right_article {
+  flex: 1.5;
+  text-align: center;
+}
+
+.right_article img {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ========== Skills Section ========== */
+.skills-grid ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+.skills-grid li {
+  background-color: #1a1a1a;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.centered-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem 0;
+}
+
+.skills-column {
+  width: 400px;
+  max-width: 90%;
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  border: 2px solid #00ff44;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 68, 0.2);
+  color: #ffffff;
+}
+
+.skills-column h4 {
+  color: #00ff44;
+  margin-bottom: 0.5rem;
+  font-size: 1.2em;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.3rem;
+}
+
+.skills-column p {
+  margin-top: 0;
+  line-height: 1.5;
+  font-size: 0.95em;
+  text-align: left;
+}
+
+/* ========== Project Columns ========== */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -159,30 +193,39 @@ section {
 .columns {
   flex: 1 1 20%;
   box-sizing: border-box;
-  padding: 10px;
-  border: 6px solid #00ff44;
-  background-color: #3e3d3d;
-  color: #000000;
-  line-height: 1.5;
   margin: 10px;
+  padding: 10px;
+  font-size: 0.9em;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  text-align: center;
+  border: 6px solid #00ff44;
 }
 
 .columns h4 {
-  text-align: center;
+  font-size: 2em;
+  margin: 5px 0;
   color: #01B2D1;
-  font-size: 1.25em;
+}
+
+.columns p {
+  font-size: 0.85em;
+  margin: 5px 0;
 }
 
 .thumbnail_align {
   text-align: center;
 }
 
-.thumbnail {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.thumbnail_align img.thumbnail {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0; /* No longer rounded */
 }
 
+/* ========== Placeholder Image ========== */
 .placeholder {
   width: 100%;
   height: auto;
@@ -193,7 +236,49 @@ section {
   margin-right: auto;
 }
 
-/* Responsive Design */
+/* ========== Calculator Styling ========== */
+.calculator-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.content-wrapper {
+  padding: 20px;
+  background-color: #1c1c1c;
+  border: 2px solid #00ff44;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.content-wrapper input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1em;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.content-wrapper button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  margin: 2px;
+  border-radius: 6px;
+  border: none;
+  background-color: #00ff44;
+  color: black;
+  cursor: pointer;
+}
+
+.content-wrapper button:hover {
+  background-color: #00cc33;
+}
+
+/* ========== Responsive Layouts ========== */
 @media (max-width: 768px) {
   .secondary_header ul li {
     display: block;
@@ -206,7 +291,6 @@ section {
 
   .right_article img {
     width: 100%;
-    max-width: 400px;
   }
 
   .columns {
@@ -243,10 +327,33 @@ section {
 @media (max-width: 576px) {
   .columns {
     flex: 1 1 100%;
-
   }
 
   body {
     font-size: 12px;
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+@media (min-width: 992px) {
+  .columns {
+    flex: 1 1 calc(25% - 1.5rem);
+  }
+}
+
+@media (max-width: 991px) {
+  .columns {
+    flex: 1 1 calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .columns {
+    flex: 1 1 100%;
   }
 }

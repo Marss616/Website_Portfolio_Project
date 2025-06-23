@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Side Scroller with Obstacles</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { background: #111; display: block; }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let keys = {};
+    document.addEventListener('keydown', e => keys[e.code] = true);
+    document.addEventListener('keyup', e => keys[e.code] = false);
+
+    let cameraX = 0;
+    let obstacleTimer = 0;
+    let nextObstacleIn = 200 + Math.floor(Math.random() * 200); // 200–400 frames
+
+
+    // Player
+    const player = {
+      x: 100,
+      y: canvas.height - 150,
+      width: 50,
+      height: 50,
+      velY: 0,
+      speed: 2,
+      jumping: false
+    };
+
+    const gravity = 0.2;
+    const ground = canvas.height - 100;
+
+    // Obstacles
+    const obstacles = [];
+
+function spawnObstacle() {
+  const height = 30 + Math.random() * 50;
+  obstacles.push({
+    x: cameraX + canvas.width + 100, // spawn ahead of the player
+    y: ground - height,
+    width: 20 + Math.random() * 50,
+    height: height
+  });
+}
+
+    function updateObstacles() {
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+
+        // Remove off-screen
+        if (obstacles[i].x + obstacles[i].width < 0) {
+          obstacles.splice(i, 1);
+        }
+
+        // Collision detection
+        if (
+          player.x < obstacles[i].x + obstacles[i].width &&
+          player.x + player.width > obstacles[i].x &&
+          player.y < obstacles[i].y + obstacles[i].height &&
+          player.y + player.height > obstacles[i].y
+        ) {
+          window.location.reload();
+        }
+      }
+    }
+
+    function drawObstacles() {
+      ctx.fillStyle = "#FF3333";
+      obstacles.forEach(obs => {
+        ctx.fillRect(obs.x - cameraX, obs.y, obs.width, obs.height);
+      });
+    }
+
+    let frameCount = 0;
+
+    function updatePlayer() {
+      // Constant forward movement
+      player.x += player.speed;
+
+      if (keys['Space'] || keys['ArrowUp']) {
+        if (!player.jumping) {
+          player.velY = -15;
+          player.jumping = true;
+        }
+      }
+
+      player.velY += gravity;
+      player.y += player.velY;
+
+      if (player.y > ground - player.height) {
+        player.y = ground - player.height;
+        player.jumping = false;
+        player.velY = 0;
+
+        
+      }
+      cameraX = player.x - 100;
+    }
+
+    function drawPlayer() {
+      ctx.fillStyle = "#00FF88";
+      ctx.fillRect(player.x - cameraX, player.y, player.width, player.height);
+    }
+
+    function gameLoop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      frameCount++;
+
+      obstacleTimer++;
+      if (obstacleTimer > nextObstacleIn) {
+        spawnObstacle();
+        obstacleTimer = 0;
+        nextObstacleIn = 200 + Math.floor(Math.random() * 200); // re-randomize
+      }
+
+
+      updatePlayer();
+      updateObstacles();
+
+      drawPlayer();
+      drawObstacles();
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
+  </script>
+</body>
+</html>
