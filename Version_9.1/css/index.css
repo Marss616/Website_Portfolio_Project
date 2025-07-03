@@ -14,11 +14,11 @@ body {
 }
 
 a {
-  color: #00ff44;
+  color: #ff0000;
   text-decoration: none;
 }
 a:visited {
-  color: #00ff44;
+  color: #ff0000;
 }
 a:hover {
   color: #717070;
@@ -54,15 +54,15 @@ p {
 
 .secondary_header {
   background-color: #303030;
-  padding: 1.25em 0;
-  width: 100%;
+  text-size-adjust: 5px;
+  padding: 1.25em;
+  width: 96%;
   text-align: center;
 }
 
 .footer {
   background-color: #0e0e0e;
-  padding: 1.25em;
-  color: #00ff44;
+  color: #ff0000;
   font-weight: lighter;
   letter-spacing: 0.125em;
   text-transform: uppercase;
@@ -104,10 +104,11 @@ section {
   padding: 1em;
   background-color: #0e0e0e;
   color: #ffffff;
+  width: 50%;
 }
 
 .left_article h3 {
-  color: #00ff44;
+  color: #ff0000;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.5em;
@@ -163,14 +164,14 @@ section {
   max-width: 90%;
   background-color: #1a1a1a;
   padding: 1rem 2rem;
-  border: 2px solid #00ff44;
+  border: 2px solid #ff0000;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 255, 68, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
   color: #ffffff;
 }
 
 .skills-column h4 {
-  color: #00ff44;
+  color: #ff0000;
   margin-bottom: 0.5rem;
   font-size: 1.2em;
   border-bottom: 1px solid #444;
@@ -186,26 +187,39 @@ section {
 
 /* ========== Project Columns ========== */
 .row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* identical width */
+  gap: 1.5rem;
 }
 
 .columns {
+  display: flex;          /* lets inner content stack naturally   */
+  flex-direction: column; /* keeps heading, text, etc. vertical   */
+  height: 100%;           /* stretch to full grid-cell height     */
   flex: 1 1 20%;
   box-sizing: border-box;
   margin: 10px;
   padding: 10px;
-  font-size: 0.9em;
-  background-color: #1c1c1c;
+  font-size: 0.6em;
   border-radius: 8px;
   text-align: center;
-  border: 6px solid #00ff44;
+  background-color: #303030;
 }
+
+/* === NEW: make every image uniform === */
+.columns img {
+  width: 100%;        /* fill the card’s width */
+  aspect-ratio: 16/9; /* or 1/1 for a square   */
+  height: auto;       /* keeps the ratio stable */
+  object-fit: cover;  /* crops edges if needed, no distortion */
+  display: block;     /* removes extra baseline gap           */
+}
+
 
 .columns h4 {
   font-size: 2em;
   margin: 5px 0;
-  color: #01B2D1;
+  color: #ffffff;
 }
 
 .columns p {
@@ -215,6 +229,7 @@ section {
 
 .thumbnail_align {
   text-align: center;
+  color: white;
 }
 
 .thumbnail_align img.thumbnail {
@@ -230,7 +245,7 @@ section {
   width: 100%;
   height: auto;
   padding: 3px;
-  background-color: #62f77b;
+  background-color: #ff6b6b;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -246,7 +261,7 @@ section {
 .content-wrapper {
   padding: 20px;
   background-color: #1c1c1c;
-  border: 2px solid #00ff44;
+  border: 2px solid #ff0000;
   border-radius: 10px;
   width: 400px;
   max-width: 90%;
@@ -269,13 +284,13 @@ section {
   margin: 2px;
   border-radius: 6px;
   border: none;
-  background-color: #00ff44;
+  background-color: #ff0000;
   color: black;
   cursor: pointer;
 }
 
 .content-wrapper button:hover {
-  background-color: #00cc33;
+  background-color: #cc0000;
 }
 
 /* ========== Responsive Layouts ========== */
@@ -356,4 +371,18 @@ section {
   .columns {
     flex: 1 1 100%;
   }
+}
+
+/* put this in your main stylesheet */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  /* replace your solid #303030 */
+  background: linear-gradient(60deg, #0d0d0d, #8a0000, #301010);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
