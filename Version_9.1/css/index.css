@@ -386,3 +386,60 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
+.form-center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.styled-form {
+  max-width: 500px;
+  width: 100%;
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.styled-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.styled-form input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.form-actions button {
+  padding: 0.75rem 2rem;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions button:hover {
+  background-color: #cc0000;
+}

@@ -22,136 +22,98 @@
 
   <section>
     <article class="left_article">
-<section>
-  <!-- left column -->
-  <article class="left_article">
-    <h3>Contact form</h3>
-    <div>
-    <?php
-    if (isset($_POST['create'])) {
-
-        // Capture form values safely
-        $firstname    = $_POST['firstname'];
-        $lastname     = $_POST['lastname'];
-        $email        = $_POST['email'];
-        $phonenumber  = $_POST['phonenumber'];
-        $password     = $_POST['password']; // Note: password should be hashed later!
-
-        $sql = "INSERT INTO users (firstname, lastname, email, phonenumber, password) VALUES (?, ?, ?, ?, ?)";
-
-        $stmtinsert = $db->prepare($sql);
-        $result = $stmtinsert->execute([$firstname, $lastname, $email, $phonenumber, $password]);
-        /*
-        if($result){
-            echo 'Successfully saved.';
-        }
-        else {
-            echo 'Issue with saving data.';
-        }
-    ?>
-    
-</div>
-
-<div>
-    <form id="registrationForm" action="registration.php" method="post">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h1>Registration</h1>
-                    <p>Fill out with correct values</p>
-                    <hr class="mb-3">
-                    <label for="firstname"><b>First Name</b></label>
-                    <input class="form-control" type="text" name="firstname" required>
-
-                    <label for="lastname"><b>Last Name</b></label>
-                    <input class="form-control" type="text" name="lastname" required>
-
-                    <label for="email"><b>Email</b></label>
-                    <input class="form-control" type="email" name="email" required>
-                    
-                    <label for="phonenumber"><b>Phone Number</b></label>
-                    <input class="form-control" type="text" name="phonenumber" required>
-                    
-                    <label for="password"><b>Password</b></label>
-                    <input class="form-control" type="password" name="password" required>
-                    <hr class="mb-3">
-                    <input class="btn btn-primary" type="submit" id="register" name="create" value="Sign up">
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript">
-$(function () {
-    $('#register').click(function (e) {
-        e.preventDefault(); // Prevent default form submission
-
-        // Check form validity
-        var valid = document.getElementById('registrationForm').checkValidity();
-
-        if (valid) {
-            // Capture input values
-            var firstname = $('#firstname').val();
-            var lastname = $('#lastname').val();
-            var email = $('#email').val();
-            var phonenumber = $('#phonenumber').val();
-            var password = $('#password').val();
-
-            // Make AJAX request
-            $.ajax({
-                type: 'POST',
-                url: 'process.php',
-                data: {
-                    firstname: firstname,
-                    lastname: lastname,
-                    email: email,
-                    phonenumber: phonenumber,
-                    password: password
-                },
-                success: function (data) {
-                    Swal.fire({
-                        title: 'Success',
-                        text: data,
-                        icon: 'success'
-                    }).then(function () {
-                        $('#registrationForm')[0].reset(); // Optional: reset form
-                    });
-                },
-                error: function () {
-                    Swal.fire({
-                        title: 'Fail',
-                        text: 'User failed to register',
-                        icon: 'error'
-                    });
-                }
-            });
-        } else {
-            alert("Form is not valid. Please fill out all required fields.");
-        }
-    });
-});
-
-</script>
-  </article>
-
-  <!-- right column -->
-  <article class="right_article">
-    <h3>Contact form</h3>
-  </article>
-</section>
-
       
+
+
+<div class="form-center-wrapper">
+  <form id="registrationForm" action="registration.php" method="post" class="styled-form">
+    
+    <div class="form-group">
+      <h3>Contact Form</h3>
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstname" name="firstname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" name="lastname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phonenumber">Phone Number</label>
+      <input type="text" id="phonenumber" name="phonenumber" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" id="register" name="create">Sign Up</button>
+    </div>
+  </form>
+</div>
+    </article>
   </section>
+
   <footer class="secondary_header footer">
     <div class="copyright">
       <strong>Version 9.1</strong>
     </div>
   </footer>
 </div>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+$(function () {
+  $('#register').click(function (e) {
+    e.preventDefault();
+    var valid = document.getElementById('registrationForm').checkValidity();
+
+    if (valid) {
+      var firstname = $('#firstname').val();
+      var lastname = $('#lastname').val();
+      var email = $('#email').val();
+      var phonenumber = $('#phonenumber').val();
+      var password = $('#password').val();
+
+      $.ajax({
+        type: 'POST',
+        url: 'process.php',
+        data: {
+          firstname, lastname, email, phonenumber, password
+        },
+        success: function (data) {
+          Swal.fire({
+            title: 'Success',
+            text: data,
+            icon: 'success'
+          }).then(function () {
+            $('#registrationForm')[0].reset();
+          });
+        },
+        error: function () {
+          Swal.fire({
+            title: 'Fail',
+            text: 'User failed to register',
+            icon: 'error'
+          });
+        }
+      });
+    } else {
+      alert("Form is not valid. Please fill out all required fields.");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
